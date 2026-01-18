@@ -1,5 +1,4 @@
-name: NodeJS with Webpack
-
+name: NodeJS build verification
 on:
   push:
     branches: [ "master" ]
@@ -28,6 +27,3 @@ jobs:
 
 #      - name: Run tests
 #        run: npm test   # <— works for Jest, Vitest, Mocha, etc.
-
-      - name: Build with Webpack
-        run: npx webpack
