@@ -79,9 +79,9 @@
                 <ul id="inswindow">
                     <% for(let instruct of dish.instructions){ %>
                         <li id="ins">
-                                <img src="<%=instruct.visualsrc%>" alt="">
-                                <p># <%=instruct.instruct%>
-                                </p>
+                            <img src="<%=instruct.visualsrc%>" alt="">
+                            <p># <%=instruct.instruct%>
+                            </p>
                         </li>
                         <%}%>
                 </ul>
@@ -144,8 +144,8 @@
                             <p>
                                 Review -- <span>
                                     <%=review.body%>
-
-                            </p></span>
+                                </span>
+                            </p>
                             <P>Posted on <%=review.published.toLocaleString()%>
                             </P>
                         </li>
