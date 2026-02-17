@@ -24,24 +24,30 @@ const { info } = require('console');
 
 //Load environment variables
 dotenv.config();
-const user = process.env.MongoDB_USER;
-const pass = process.env.MongoDB_PASSWORD;;
+// const dbName = process.env.DB_NAME_DEV;
+// const dbHost = process.env.DB_HOST_DEV;
+const user = process.env.DB_USER_DEV;
+const pass = process.env.DB_PASS_DEV;
+const portDB = process.env.DB_PORT_DEV;
+const AT_USER = process.env.ATLAS_USER;
+const AT_PASS = process.env.ATLAS_PASS;
+const AT_CLUST = process.env.ATLAS_CLUSTER;
+
 
 //MongoDB Connection
 const encoded_pwd = encodeURIComponent(pass);
-
-
 //DevPort
 const dbURIo1 = `mongodb://127.0.0.1:27017/LIsCuisine`; //NOAUTH
-//const dbURIo = `mongodb://127.0.0.1:28001/LIsCuisine`; //NOAUTH
-//const dbURIa = `mongodb://${user}:${pass}@127.0.0.1:28001/LIsCuisine`; //AUTH
-//Default Port
-//const dbURIdef = `mongodb://${user}:${encoded_pwd}@127.0.0.1:27017/LIsCuisine?authSource=admin`;
+const dbURIna = `mongodb://127.0.0.1:${portDB}/LIsCuisine`; //NOAUTH
+const dbURIau = `mongodb://${user}:${encoded_pwd}@127.0.0.1:${portDB}/LIsCuisine`; //AUTH
+//Admin Port
+const dbURIad = `mongodb://${user}:${encoded_pwd}@127.0.0.1:${portDB}/LIsCuisine?authSource=admin`;
 
 // Atlas Connection String
-//const dbURI_cloud = `mongodb+srv://${user}:${encoded_pwd}@${process.env.Atlas_CLUSTER}.mongodb.net/LIsCuisine?retryWrites=true&w=majority`;
+const encoded_AT_PASS = encodeURIComponent(AT_PASS);
+const dbURI_cloud = `mongodb+srv://${AT_USER}:${encoded_AT_PASS}@${AT_CLUST}.mongodb.net/LIsCuisine?retryWrites=true&w=majority`;
 
-mongoose.connect(dbURIo1)
+mongoose.connect(dbURIna)
   .then(() => {
     console.log("MONGO CONNECTION OPEN!!!")
   })
