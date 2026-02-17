@@ -1,30 +1,89 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Desserts &#x1F36C</title>
+    <link rel="stylesheet" href="/resources/styles/servingsstyle.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Flamenco:wght@300;400&display=swap" rel="stylesheet">
 </head>
-<body style="display: flex;  flex-direction: column; align-content: center;">
-    <h1 style="font-family:Georgia, 'Times New Roman', Times, serif; align-self: center;">Desserts</h1>
-	<div>
-		<ul style="border: 5px groove goldenrod;">
-			<% menu.Desserts.forEach(dess => { %> 
-			<figure style=" border-radius: 5px; background: azure;">
-                <li><h3><%= dess.name %></h3> - €<%= dess.price %></li>
-				<div>
-					<img src="<%= dess.img %>" style="display: block; width: 350px; height: 300px;">
-					<figcaption style="font-size: 15px; font-style: italic; display: inline-flex; align-items: center; background-color: gray; width:100%; color: brown;">Photo by <a href="<%= dess.imgref %>"><%= dess.imgauth %></a></figcaption>
-				</div>
-					<figcaption><h4 style="font-family: 'Trebuchet MS';"><%= dess.description %></h4></figcaption>
-			</figure>
-            <% }) %>
-        </ul>
-	<div>
-		<a href="/desserts/new">Add new Dessert</a>
-	</div>
+
+<body>
+    <header class="headinfo">
+        <div class="title">
+            <h2><a href="/">Cook'd by LI</a></h2>
+        </div>
+        <nav class="navigation">
+            <a href="/dishes">
+                <li>Dishes</li>
+            </a>
+            <a href="/sides">
+                <li>Sides</li>
+            </a>
+            <a href="/desserts">
+                <li>Desserts</li>
+            </a>
+            <a href="#review">
+                <li>Reviews</li>
+            </a>
+        </nav>
+    </header>
+
+    <div class="background" style="background-image: url('/resources/images/PancakesFolded.avif');">
+        <h2>Endulza Tu Día</h2>
     </div>
-<script src="../../resources/scripts/desserts.js"></script>
+
+    <div class="main-section">
+        <div class="categorylabel">
+            <h2>Desserts &#x1F36C</h2>
+        </div>
+        <div class="dish-container">
+            <ul class="dishback">
+                <% menu.Desserts.forEach(dess => { %>
+                    <li class="dishes dessert-card">
+                        <h4 class="dishheading">
+                            <%= dess.name %> || €<%= dess.price %>
+                        </h4>
+                        <div class="card-content">
+                            <% if (dess.img) { %>
+                                <div class="dishimg">
+                                    <img src="<%= dess.img %>" alt="<%= dess.name %>">
+                                </div>
+                            <% } %>
+                            <div class="dishtext-info">
+                                <p class="dishDesc">
+                                    <%= dess.description %>
+                                </p>
+                                <% if (dess.imgauth) { %>
+                                    <p class="img-credit">
+                                        Photo by <a href="<%= dess.imgref %>"><%= dess.imgauth %></a>
+                                    </p>
+                                <% } %>
+                            </div>
+                        </div>
+                    </li>
+                <% }) %>
+            </ul>
+
+            <div class="add-dish-container">
+                <a href="/desserts/new" class="add-dish-button">Add new Dessert</a>
+            </div>
+        </div>
+    </div>
+
+    <script src="../../resources/scripts/desserts.js"></script>
 </body>
-<!-- <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script> -->
+
+<footer>
+    <p>Copyright LI Corp 2025</p>
+    <div class="contact">
+        <p>Email | lungista@hotmail.com </p>
+        <p>Mobile | +491788728575</p>
+        <p>Blog |</p>
+    </div>
+</footer>
+
 </html>

@@ -1,7 +1,18 @@
+html {
+    margin: 0;
+    width: 100%;
+    font-family: 'Flamenco';
+    font-size: 20px;
+    color: hsla(10, 81%, 94%, 0.979);
+    height: fit-content;
+}
+
 body {
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     margin: 0;
+    width: 100%;
+    position: relative;
 }
 .headinfo {
     display: flex;  
@@ -21,7 +32,6 @@ body {
     display: inline-flex;
     float: left;
     font-size: 1.5rem;
-    display: inline-flex;
     letter-spacing: 5px;
     /*    text-decoration: underline wavy black;*/
 }
@@ -36,32 +46,120 @@ body {
     background-color: rgb(190, 86, 86);
 }
 
+.navigation {
+    display: flex;
+}
+
+nav li {
+    display: inline-flex;
+    padding-right: 0.5rem;
+}
+
+nav a {
+    color: hsl(20, 94%, 28%);
+    transition: all .3s ease-out;
+}
+
+nav a:hover {
+    display: inline-flex;
+    padding-right: 0.5rem;
+    font-size: 1.25rem;
+    font-weight: 600;
+    text-decoration: none;
+    color: rgb(252, 231, 205);
+    background-color: hsla(20, 65%, 38%, 0.7);
+}
+
+.background {
+    display: flex;
+    position: relative;
+    margin: 0 auto;
+    background-image: url("/resources/images/photo-1542320260-f8f651de8c12.avif");
+    background-position: bottom;
+    background-size: cover;
+    top: 4rem;
+    height: 30rem;
+    width: 100%;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    color: bisque;
+    font-family: 'Flamenco';
+}
+
+.background h2 {
+    display: inline-flex;
+    background-color: hsl(20, 94%, 15%, 0.5);
+    font-style: normal;
+    font-size: 2rem;
+    padding: 0.5rem;
+    transition: all 0.3s ease-in-out;
+}
+
+.background h2:hover {
+    display: inline-flex;
+    background-color: hsl(20, 94%, 15%, 0.5);
+    font-style: normal;
+    font-size: 3rem;
+    padding: 0.5rem;
+}
+
+.main-section {
+    display: flex;
+    position: relative;
+    flex-direction: column;
+    top: 4rem;
+    width: 100%;
+    background-color: papayawhip;
+}
+
+.categorylabel {
+    display: flex;
+    margin: 0;
+    height: 3rem;
+    width: 100%;
+    align-items: center;
+    justify-content: center;
+    background-color: hsl(20, 94%, 11%);
+}
+
+.categorylabel h2 {
+    display: inline-flex;
+    position: relative;
+    color: bisque;
+    text-transform: uppercase;
+    font-style: oblique;
+    letter-spacing: 0.1rem;
+    margin-left: 1.5rem;
+}
+
 h1 {
     display: flex;
     margin: 0;
-    font-family: Georgia, 'Times New Roman', Times, serif;
+    font-family: 'Flamenco';
     align-self: center;
+    font-size: 2rem;
 }
 
 #dishBox,
 #sideBox {
     margin: 20px;
     padding: 10px;
-    border: 2px solid #a53030;
+    border: 2px solid hsl(20, 94%, 28%);
     border-radius: 8px;
-    background-color: #f9f9f9;
+    background-color: hsla(34, 67%, 95%, 0.9);
     list-style: none;
 }
 
 #dishBox h4,
 #sideBox h4 {
     text-align: center;
-    color: #333;
+    color: hsl(20, 94%, 28%);
 }
 
 #dishBox h2 {
     text-align: center;
-    color: #333;
+    color: hsl(20, 94%, 28%);
 }
 
 #dishdeetblock {
@@ -72,9 +170,9 @@ h1 {
     align-items: center;
     margin: 20px;
     padding: 15px;
-    border: 1px solid #ccc;
+    border: 1px solid hsl(20, 94%, 38%);
     border-radius: 10px;
-    background-color: #ffffff;
+    background-color: hsla(34, 67%, 95%, 0.9);
     width: 80%;
 }
 
@@ -85,7 +183,6 @@ h1 {
     width: 40%;
     justify-content: center;
     align-items: center;
-    display: inline-flex;
 }
 
 #detailsblock {
@@ -94,18 +191,18 @@ h1 {
     flex-direction: column;
     padding: 0 20px;
     font-size: 18px;
-    color: #555;
+    color: hsl(20, 94%, 28%);
     width: 60%;
 }
 
 #dishdeetsbtn {
-    background-color: hsl(32, 86%, 81%);
+    background-color: hsla(32, 86%, 81%, 0.7);
     border: none;
     padding: 5px 10px;
     border-radius: 5px;
     cursor: pointer;
-    font-size: 16px;
-    transition: background-color 0.5s ease;
+    font-size: 1rem;
+    transition: background-color 0.3s ease;
     margin-top: 10px;
     display: flex;
     justify-self: flex-end;
@@ -115,33 +212,157 @@ h1 {
     background-color: hsl(32, 86%, 70%);
 }
 
+#dishdeetsbtn a {
+    text-decoration: none;
+    color: hsl(20, 94%, 28%);
+    font-weight: 600;
+}
+
+.dish-container {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    align-items: center;
+}
+
+.add-dish-container {
+    display: flex;
+    justify-content: center;
+    padding: 2rem 0;
+    width: 100%;
+}
+
+.add-dish-button {
+    display: inline-block;
+    background-color: hsla(34, 67%, 60%, 0.9);
+    color: hsl(20, 94%, 28%);
+    padding: 12px 24px;
+    border-radius: 8px;
+    text-decoration: none;
+    font-size: 1.1rem;
+    font-weight: 600;
+    font-family: 'Flamenco';
+    transition: all 0.3s ease;
+    border: 2px solid hsl(20, 94%, 28%);
+}
+
+.add-dish-button:hover {
+    background-color: hsla(34, 67%, 70%, 0.9);
+    transform: scale(1.05);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
 /* this is a way to style the specific dishes section background */
 .dishback {
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
     justify-content: space-around;
-    background-color: burlywood;
+    background-color: hsl(20, 94%, 15%, 0.9);
+    height: fit-content;
+    padding: 1rem 0;
 }
 
 .dishes {
     display: flex;
     position: relative;
     flex-direction: column;
-    margin: 2rem 1rem;
-    height: 20rem;
+    margin: 2rem auto;
+    height: 18rem;
     width: 25rem;
     /*border: 0.25rem dashed thistle;*/
     border-radius: 1.7rem;
     justify-self: flex-start;
-    background-color: hsl(20, 94%, 15%, 0.7);
+    background-color: hsl(20, 94%, 25%, 0.9);
+}
+
+/* Taller cards for dishes, sides and desserts with images */
+.dish-card,
+.side-card,
+.dessert-card {
+    height: auto;
+    min-height: 28rem;
+    max-height: 35rem;
+    justify-content: space-between;
+}
+
+/* Slightly shorter cards when no image present */
+.dish-card:not(:has(.dishimg)),
+.side-card:not(:has(.dishimg)),
+.dessert-card:not(:has(.dishimg)) {
+    min-height: 22rem;
+}
+
+.dish-card #dishdeetsbtn,
+.side-card #dishdeetsbtn,
+.dessert-card #dishdeetsbtn {
+    margin-top: auto;
+}
+
+.card-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    overflow-y: auto;
+    overflow-x: hidden;
+    flex: 1;
+    scroll-behavior: smooth;
+}
+
+.card-content::-webkit-scrollbar {
+    width: 0.5rem;
+}
+
+.card-content .dishimg {
+    width: 100%;
+    height: 12rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: hsla(34, 67%, 60%, 0.9);
+    margin: 0;
+}
+
+.card-content .dishimg img {
+    width: 90%;
+    height: 11rem;
+    object-fit: cover;
+    border-radius: 10%;
+    margin: 0.5rem;
+}
+
+.dishtext-info {
+    display: flex;
+    flex-direction: column;
+    padding: 0.75rem 1rem;
+    width: 100%;
+    background-color: hsl(11, 73%, 7%);
+    flex: 1;
+}
+
+.img-credit {
+    font-size: 0.75rem;
+    font-style: italic;
+    color: hsl(20, 94%, 48%);
+    margin: 0.5rem 0;
+    text-align: center;
+}
+
+.img-credit a {
+    color: hsl(20, 94%, 58%);
+    text-decoration: underline;
+}
+
+.img-credit a:hover {
+    color: hsl(20, 94%, 68%);
 }
 
 .dishheading {
     display: inline-flex;
     position: relative;
     color: hsl(20, 94%, 28%);
-    background-color: #b1bcc7;
+    background-color: hsla(34, 67%, 60%, 0.9);
     align-items: center;
     justify-content: center;
     font-size: 1.5rem;
@@ -150,7 +371,7 @@ h1 {
     margin: 0;
     margin-bottom: 0;
     font-family: 'Flamenco';
-    height: 2rem;
+    height: 4rem;
 }
 
 .dishdescription {
@@ -231,4 +452,36 @@ h1 {
     background: -webkit-linear-gradient(hsl(20, 94%, 15%), rgb(196, 155, 101), hsl(20, 94%, 38%));
     box-shadow: inset 0 0 5px indianred;
     border-radius: 10px;
+}
+
+footer {
+    display: flex;
+    position: relative;
+    background-color: hsl(11, 73%, 7%);
+    color: hsl(20, 94%, 38%);
+    margin: 0;
+    align-items: center;
+    justify-content: space-evenly;
+    height: 5rem;
+    border-top: 0.15rem solid burlywood;
+    top: 4rem;
+}
+
+.contact {
+    display: flex;
+    flex-direction: column;
+}
+
+.contact p {
+    display: inline-flex;
+    position: relative;
+    margin: 0;
+    align-self: center;
+}
+
+.dishDesc {
+    color: hsl(20, 94%, 38%);
+    margin: 0.5rem 1rem;
+    font-size: 0.95rem;
+    text-align: center;
 }
