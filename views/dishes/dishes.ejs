@@ -83,7 +83,11 @@
     </div>
   </div>
 
-  <script src="../../resources/scripts/dishes.js"></script>
+  <script>
+    window.dishImages = <%- JSON.stringify(imgData.Dish) %>;
+    window.sideImages = <%- JSON.stringify(imgData.Side) %>;
+  </script>
+  <script src="/resources/scripts/dishes.js"></script>
 </body>
 
 <footer>

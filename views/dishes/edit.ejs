@@ -16,37 +16,52 @@
             <button>Delete</button>
         </form>
     </div>
-<h2>Edit Dish</h2>
-You are editing <strong>
-    <%=dish.name%>
-</strong> dish.
-<br></br>
-<form action="/dishes/<%=dish._id%>/edit?_method=PUT" method="POST">
-    <label for="name">Dish Name</label>
-    <input type="text" name="dish[name]" id="name" placeholder="Enter a dish name..">
-    <label for="price">Price (per Serving)</label>
-    <input type="float" id="price" name="dish[price]" placeholder="Enter a price..">
-    <label for="desc">Description</label>
-    <input type="text" id="desc" name="dish[description]" placeholder="Describe the dish..">
-    <label for="prepTime">Prep Time (minutes)</label>
-    <input type="number" id="prepTime" name="dish[prepTime]" placeholder="Enter prep time..">
-    <label for="imgsrc">Image URL</label>
-    <input type="text" id="imgsrc" name="dish[imgsrc]" placeholder="Enter image URL..">
-    <label for="imgauth">Image Author</label>
-    <input type="text" id="imgauth" name="dish[imgauth]" placeholder="Enter image author..">
-    <label for="category">Select Category</label>
-    <select name="dish[category]" id="category">
-        <% for(let category of categories){ %>
-            <option value="<%=category%>">
-                <%=category%>
-            </option>
-            <% } %>
-    </select>
-    <button>Update</button>
-</form>
-<a href="/dishes">Back To Main Dishes</a>
+    <h2>Edit Dish</h2>
+    You are editing <strong>
+        <%=dish.name%>
+    </strong> dish.
+    <br></br>
+    <form action="/dishes/<%=dish._id%>/edit?_method=PUT" method="POST">
+        <label for="name">Dish Name</label>
+        <input type="text" name="dish[name]" id="name" placeholder="Enter a dish name..">
+        <label for="price">Price (per Serving)</label>
+        <input type="float" id="price" name="dish[price]" placeholder="Enter a price..">
+        <label for="desc">Description</label>
+        <input type="text" id="desc" name="dish[description]" placeholder="Describe the dish..">
+        <label for="prepTime">Prep Time (minutes)</label>
+        <input type="number" id="prepTime" name="dish[prepTime]" placeholder="Enter prep time..">
+        <label for="imgsrc">Select Image:</label>
+        <select name="dish[imgsrc]" id="imgsrc">
+            <option value="">-- Choose an image --</option>
+            <% for (let dishName in imgData.Dish) { %>
+                <option value="<%= imgData.Dish[dishName].imgsrc %>" 
+                        data-ref="<%= imgData.Dish[dishName].imgref %>"
+                        data-auth="<%= imgData.Dish[dishName].imgauth %>"
+                        <%= dish.imgsrc === imgData.Dish[dishName].imgsrc ? 'selected' : '' %>>
+                    <%= dishName %>
+                </option>
+                <% } %>
+        </select>
+        <input type="hidden" id="imgref" name="dish[imgref]" value="<%= dish.imgref || '' %>">
+        <label for="imgauth">Image Author</label>
+        <input type="text" id="imgauth" name="dish[imgauth]" placeholder="Enter image author.." value="<%= dish.imgauth || '' %>" readonly>
+        <label for="category">Select Category</label>
+        <select name="dish[category]" id="category">
+            <% for(let category of categories){ %>
+                <option value="<%=category%>">
+                    <%=category%>
+                </option>
+                <% } %>
+        </select>
+        <button>Update</button>
+    </form>
+    <a href="/dishes">Back To Main Dishes</a>
 
-
+    <script>
+        window.dishImages = <%- JSON.stringify(imgData.Dish) %>;
+        window.sideImages = <%- JSON.stringify(imgData.Side || {}) %>;
+    </script>
+    <script src="/resources/scripts/dishes.js"></script>
 </body>
 
 </html>

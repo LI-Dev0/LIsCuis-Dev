@@ -34,13 +34,25 @@
                             <label for="prepTime">Prep Time (minutes)</label>
                             <input type="number" id="prepTime" name="dish[prepTime]" placeholder="Enter prep time..">
                             <label for="prepTime">Difficulty</label>
-                            <input type="number" id="difficulty" name="dish[difficulty]" placeholder="Enter a difficulty level 1(weak) to 5(strong)..">
+                            <input type="number" id="difficulty" name="dish[difficulty]"
+                                placeholder="Enter a difficulty level 1(weak) to 5(strong)..">
                             <label for="array">Ingredients List</label>
-                            <input type="array" id="ingredients" name="dish[ingredients]" placeholder="List the ingredients..">
-                            <label for="imgsrc" >Image URL</label>
-                            <input type="text" id="imgsrc" name="dish[imgsrc]" placeholder="Enter image URL..">
+                            <input type="array" id="ingredients" name="dish[ingredients]"
+                                placeholder="List the ingredients..">
+                            <label for="imgsrc">Select Image:</label>
+                            <select name="dish[imgsrc]" id="imgsrc">
+                                <option value="">-- Choose an image --</option>
+                                <% for (let dishName in imgData.Dish) { %>
+                                    <option value="<%= imgData.Dish[dishName].imgsrc %>"
+                                        data-ref="<%= imgData.Dish[dishName].imgref %>"
+                                        data-auth="<%= imgData.Dish[dishName].imgauth %>">
+                                        <%= dishName %>
+                                    </option>
+                                    <% } %>
+                            </select>
+                            <input type="hidden" id="imgref" name="dish[imgref]">
                             <label for="imgauth">Image Author</label>
-                            <input type="text" id="imgauth" name="dish[imgauth]" placeholder="Enter image author..">
+                            <input type="text" id="imgauth" name="dish[imgauth]" placeholder="Enter image author.." readonly>
                             <label for="category">Select Category</label>
                             <select name="dish[category]" id="category">
                                 <% for(let category of categories){ %>
@@ -53,7 +65,11 @@
                         </form>
                         <a href="/dishes">Back To Main Dishes</a>
                     </div>
-
+                    <script>
+                        window.dishImages = <%- JSON.stringify(imgData.Dish) %>;
+                        window.sideImages = <%- JSON.stringify(imgData.Side || {}) %>;
+                    </script>
+                    <script src="/resources/scripts/dishes.js"></script>
 </body>
 
 </html>
