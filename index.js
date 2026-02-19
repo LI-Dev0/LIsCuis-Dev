@@ -41,7 +41,7 @@ const dbURIo1 = `mongodb://127.0.0.1:27017/LIsCuisine`; //NOAUTH
 const dbURIna = `mongodb://127.0.0.1:${portDB}/LIsCuisine`; //NOAUTH
 const dbURIau = `mongodb://${user}:${encoded_pwd}@127.0.0.1:${portDB}/LIsCuisine`; //AUTH
 //Admin Port
-const dbURIad = `mongodb://${user}:${encoded_pwd}@127.0.0.1:${portDB}/LIsCuisine?authSource=admin`;
+const dbURIad = `mongodb://${user}:${encoded_pwd}@127.0.0.1:${portDB}/LIsCuisine?authSource=admin`; //AUTH with authSource=admin
 
 // Atlas Connection String
 const encoded_AT_PASS = encodeURIComponent(AT_PASS);
@@ -65,6 +65,7 @@ app.use('/resources', express.static(path.join(__dirname, 'resources')));
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
 
+//flash and session middleware
 const sessionOptions = {
   secret: 'seshkey',
   resave: false,
@@ -75,8 +76,6 @@ const sessionOptions = {
     maxAge: 1000 * 60 * 60 * 24 * 3 // 3 days
   }
 };
-
-//flash and session middleware
 app.use(session(sessionOptions));
 app.use(flash());
 
@@ -176,6 +175,10 @@ app.get('/menujson', (req, res) => {
      </ul>
    `);
   //});
+});
+//API endpoint to get image data
+app.get('/api/imgdata', (req, res) => {
+  res.json(imgData);
 });
 
 //page not found error for all other routes
