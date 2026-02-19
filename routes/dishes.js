@@ -7,6 +7,8 @@ const Instruction = require('../models/instruction');
 const Nutrition = require('../models/nutrition');
 const categories = ['vegan', 'carne+', 'vegeterian'];
 const units = ['kJ', 'kcal', 'g', 'mg'];
+// require dishes.js for client-side interactivity on dishes.ejs
+const dishImages = require('../resources/images/imgdata.json').Dish; // adjust path as needed
 
 router.get('/', async (req, res) => {
     const { category } = req.query;
@@ -16,7 +18,7 @@ router.get('/', async (req, res) => {
 });
 
 router.get('/new', async (req, res) => {
-    res.render('dishes/new', { categories, success: req.query.success, error: req.query.error })
+    res.render('dishes/new', { categories, success: req.query.success, error: req.query.error, imgData: { Dish: dishImages } })
 })
 
 router.post('/', async (req, res) => {
@@ -42,7 +44,7 @@ router.get('/:id', async (req, res,) => {
 router.get('/:id/edit', async (req, res) => {
     const { id } = req.params;
     const dish = await Dish.findById(id);//.populate('farm', 'name');
-    res.render('dishes/edit', { dish, categories,  success: req.query.success, error: req.query.error })
+    res.render('dishes/edit', { dish, categories,  success: req.query.success, error: req.query.error, imgData: { Dish: dishImages } })
     //   res.send(`Edit page for the respective main dish with an ID of ${id} =)`, { dish })
 })
 
